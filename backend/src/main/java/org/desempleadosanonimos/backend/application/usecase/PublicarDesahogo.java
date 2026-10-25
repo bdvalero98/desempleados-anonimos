@@ -1,18 +1,18 @@
-package org.desempleadosanonimos.backend.aplication.usecase;
+package org.desempleadosanonimos.backend.application.usecase;
 
-import org.desempleadosanonimos.backend.aplication.port.GeneradorDeAlias;
-import org.desempleadosanonimos.backend.aplication.port.PublicacionRepository;
+import org.desempleadosanonimos.backend.application.port.GeneradorDeAlias;
+import org.desempleadosanonimos.backend.application.port.PublicacionRepository;
 import org.desempleadosanonimos.backend.domain.model.Publicacion;
 import reactor.core.publisher.Mono;
 
-public class PublicarDeshago {
+public class PublicarDesahogo {
 
     private final PublicacionRepository publicacionRepository;
 
     private final GeneradorDeAlias generadorDeAlias;
 
-    public PublicarDeshago(PublicacionRepository publicacionRepository,
-                           GeneradorDeAlias generadorDeAlias) {
+    public PublicarDesahogo(PublicacionRepository publicacionRepository,
+                            GeneradorDeAlias generadorDeAlias) {
 
         this.publicacionRepository = publicacionRepository;
         this.generadorDeAlias = generadorDeAlias;

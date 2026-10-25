@@ -1,7 +1,7 @@
 package org.desempleadosanonimos.backend.infrastructure.web;
 
-import org.desempleadosanonimos.backend.aplication.usecase.ListarDeshagos;
-import org.desempleadosanonimos.backend.aplication.usecase.PublicarDeshago;
+import org.desempleadosanonimos.backend.application.usecase.ListarDesahogos;
+import org.desempleadosanonimos.backend.application.usecase.PublicarDesahogo;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -11,20 +11,20 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api/desahogos")
 public class DesahogoController {
 
-    private final PublicarDeshago publicarDeshago;
-    private final ListarDeshagos listarDeshagos;
+    private final PublicarDesahogo publicarDesahogo;
+    private final ListarDesahogos listarDesahogos;
 
-    public DesahogoController(PublicarDeshago publicarDeshago,
-                              ListarDeshagos listarDeshagos) {
-        this.publicarDeshago = publicarDeshago;
-        this.listarDeshagos = listarDeshagos;
+    public DesahogoController(PublicarDesahogo publicarDesahogo,
+                              ListarDesahogos listarDesahogos) {
+        this.publicarDesahogo = publicarDesahogo;
+        this.listarDesahogos = listarDesahogos;
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<PublicacionResponse> publicar(@RequestBody PublicarDesahogoRequest publicarDesahogoRequest) {
 
-        return publicarDeshago
+        return publicarDesahogo
                 .ejecutar(publicarDesahogoRequest.mensaje(),
                         publicarDesahogoRequest.diasDesempleado())
                 .map(PublicacionResponse::desde);
@@ -32,7 +32,7 @@ public class DesahogoController {
 
     @GetMapping
     public Flux<PublicacionResponse> listar() {
-        return listarDeshagos
+        return listarDesahogos
                 .ejecutar()
                 .map(PublicacionResponse::desde);
     }

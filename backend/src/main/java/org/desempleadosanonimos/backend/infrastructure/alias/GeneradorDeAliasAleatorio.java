@@ -1,6 +1,6 @@
 package org.desempleadosanonimos.backend.infrastructure.alias;
 
-import org.desempleadosanonimos.backend.aplication.port.GeneradorDeAlias;
+import org.desempleadosanonimos.backend.application.port.GeneradorDeAlias;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;

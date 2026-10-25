@@ -1,14 +1,14 @@
-package org.desempleadosanonimos.backend.aplication.usecase;
+package org.desempleadosanonimos.backend.application.usecase;
 
-import org.desempleadosanonimos.backend.aplication.port.PublicacionRepository;
+import org.desempleadosanonimos.backend.application.port.PublicacionRepository;
 import org.desempleadosanonimos.backend.domain.model.Publicacion;
 import reactor.core.publisher.Flux;
 
-public class ListarDeshagos {
+public class ListarDesahogos {
 
     private final PublicacionRepository publicacionRepository;
 
-    public ListarDeshagos(PublicacionRepository publicacionRepository) {
+    public ListarDesahogos(PublicacionRepository publicacionRepository) {
         this.publicacionRepository = publicacionRepository;
     }
 

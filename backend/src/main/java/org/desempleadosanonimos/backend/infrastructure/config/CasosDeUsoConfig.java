@@ -1,9 +1,9 @@
 package org.desempleadosanonimos.backend.infrastructure.config;
 
-import org.desempleadosanonimos.backend.aplication.port.GeneradorDeAlias;
-import org.desempleadosanonimos.backend.aplication.port.PublicacionRepository;
-import org.desempleadosanonimos.backend.aplication.usecase.ListarDeshagos;
-import org.desempleadosanonimos.backend.aplication.usecase.PublicarDeshago;
+import org.desempleadosanonimos.backend.application.port.GeneradorDeAlias;
+import org.desempleadosanonimos.backend.application.port.PublicacionRepository;
+import org.desempleadosanonimos.backend.application.usecase.ListarDesahogos;
+import org.desempleadosanonimos.backend.application.usecase.PublicarDesahogo;
 import org.desempleadosanonimos.backend.infrastructure.alias.GeneradorDeAliasAleatorio;
 import org.desempleadosanonimos.backend.infrastructure.persistence.PublicacionRepositoryEnMemoria;
 import org.springframework.context.annotation.Bean;
@@ -23,13 +23,13 @@ public class CasosDeUsoConfig {
     }
 
     @Bean
-    public PublicarDeshago publicarDeshago(PublicacionRepository publicacionRepository,
-                                           GeneradorDeAlias generadorDeAlias) {
-        return new PublicarDeshago(publicacionRepository, generadorDeAlias);
+    public PublicarDesahogo publicarDeshago(PublicacionRepository publicacionRepository,
+                                            GeneradorDeAlias generadorDeAlias) {
+        return new PublicarDesahogo(publicacionRepository, generadorDeAlias);
     }
 
     @Bean
-    public ListarDeshagos listarDeshagos(PublicacionRepository publicacionRepository) {
-        return new ListarDeshagos(publicacionRepository);
+    public ListarDesahogos listarDeshagos(PublicacionRepository publicacionRepository) {
+        return new ListarDesahogos(publicacionRepository);
     }
 }

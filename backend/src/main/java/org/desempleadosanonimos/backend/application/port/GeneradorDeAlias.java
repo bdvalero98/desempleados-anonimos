@@ -1,4 +1,4 @@
-package org.desempleadosanonimos.backend.aplication.port;
+package org.desempleadosanonimos.backend.application.port;
 
 public interface GeneradorDeAlias {
 

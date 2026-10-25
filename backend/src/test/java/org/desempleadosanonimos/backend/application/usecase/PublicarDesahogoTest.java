@@ -1,7 +1,7 @@
-package org.desempleadosanonimos.backend.aplication.usecase;
+package org.desempleadosanonimos.backend.application.usecase;
 
-import org.desempleadosanonimos.backend.aplication.port.GeneradorDeAlias;
-import org.desempleadosanonimos.backend.aplication.port.PublicacionRepository;
+import org.desempleadosanonimos.backend.application.port.GeneradorDeAlias;
+import org.desempleadosanonimos.backend.application.port.PublicacionRepository;
 import org.desempleadosanonimos.backend.domain.exception.PublicacionInvalidaException;
 import org.desempleadosanonimos.backend.domain.model.Publicacion;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,7 @@ import reactor.test.StepVerifier;
 import java.util.ArrayList;
 import java.util.List;
 
-class PublicarDeshagoTest {
+class PublicarDesahogoTest {
 
     private final List<Publicacion> guardadas = new ArrayList<>();
 
@@ -31,12 +31,12 @@ class PublicarDeshagoTest {
 
     private final GeneradorDeAlias aliasFijo = () -> "Alias de Prueba";
 
-    private final PublicarDeshago publicarDeshago = new PublicarDeshago(repositorioFalso, aliasFijo);
+    private final PublicarDesahogo publicarDesahogo = new PublicarDesahogo(repositorioFalso, aliasFijo);
 
     @Test
     void publicaYGuardaElDesahogo() {
         StepVerifier.create(
-                        publicarDeshago.ejecutar("Dia largo", 15)
+                        publicarDesahogo.ejecutar("Dia largo", 15)
                 )
                 .expectNextMatches(p -> p.alias().equals("Alias de Prueba")
                         && p.mensaje().equals("Dia largo"))
@@ -46,7 +46,7 @@ class PublicarDeshagoTest {
     @Test
     void fallaSiElMensajeEstaVacio() {
         StepVerifier.create(
-                        publicarDeshago.ejecutar(" ", 15)
+                        publicarDesahogo.ejecutar(" ", 15)
                 )
                 .expectError(PublicacionInvalidaException.class)
                 .verify();

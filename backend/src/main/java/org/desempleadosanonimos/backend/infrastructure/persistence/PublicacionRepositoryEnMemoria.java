@@ -1,6 +1,6 @@
 package org.desempleadosanonimos.backend.infrastructure.persistence;
 
-import org.desempleadosanonimos.backend.aplication.port.PublicacionRepository;
+import org.desempleadosanonimos.backend.application.port.PublicacionRepository;
 import org.desempleadosanonimos.backend.domain.model.Publicacion;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
