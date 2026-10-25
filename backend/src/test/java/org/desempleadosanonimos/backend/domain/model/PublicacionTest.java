@@ -37,4 +37,15 @@ class PublicacionTest {
         assertThrows(PublicacionInvalidaException.class,
                 () -> Publicacion.crear("Gato Pensativo", "la prostitucion no suena tan mal", -1));
     }
+
+    @Test
+    void reaccionarDevuelveUnaCopiaSinModificarLaOriginal() {
+        Publicacion original = Publicacion.crear("Gato Terco #7", "Seguimos", null);
+
+        Publicacion conReaccion = original.reaccionar(TipoReaccion.YO_TAMBIEN);
+
+        assertEquals(0, original.conteoDeReacciones().yoTambien());
+        assertEquals(1, conReaccion.conteoDeReacciones().yoTambien());
+        assertEquals(original.id(), conReaccion.id());
+    }
 }

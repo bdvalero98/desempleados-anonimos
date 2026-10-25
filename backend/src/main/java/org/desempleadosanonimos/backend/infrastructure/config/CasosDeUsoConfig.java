@@ -7,6 +7,7 @@ import org.desempleadosanonimos.backend.application.port.PublicacionRepository;
 import org.desempleadosanonimos.backend.application.usecase.ListarDesahogos;
 import org.desempleadosanonimos.backend.application.usecase.ObservarDesahogos;
 import org.desempleadosanonimos.backend.application.usecase.PublicarDesahogo;
+import org.desempleadosanonimos.backend.application.usecase.ReaccionarADesahogo;
 import org.desempleadosanonimos.backend.infrastructure.alias.GeneradorDeAliasAleatorio;
 import org.desempleadosanonimos.backend.infrastructure.live.PublicacionesEnVivoConSink;
 import org.desempleadosanonimos.backend.infrastructure.persistence.PublicacionRepositoryEnMemoria;
@@ -46,5 +47,11 @@ public class CasosDeUsoConfig {
     @Bean
     public ObservarDesahogos observarDesahogos(FuenteDePublicaciones fuenteDePublicaciones) {
         return new ObservarDesahogos(fuenteDePublicaciones);
+    }
+
+    @Bean
+    public ReaccionarADesahogo reaccionarADesahogo(PublicacionRepository publicacionRepository,
+                                                   NotificadorDePublicaciones notificadorDePublicaciones) {
+        return new ReaccionarADesahogo(publicacionRepository, notificadorDePublicaciones);
     }
 }

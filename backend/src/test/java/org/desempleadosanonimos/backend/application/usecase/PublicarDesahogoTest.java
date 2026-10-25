@@ -13,6 +13,8 @@ import reactor.test.StepVerifier;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import java.util.function.UnaryOperator;
 
 class PublicarDesahogoTest {
 
@@ -29,6 +31,11 @@ class PublicarDesahogoTest {
         @Override
         public Flux<Publicacion> listarRecientes() {
             return Flux.fromIterable(guardadas);
+        }
+
+        @Override
+        public Mono<Publicacion> modificar(UUID id, UnaryOperator<Publicacion> cambio) {
+            return Mono.empty();
         }
     };
 

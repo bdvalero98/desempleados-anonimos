@@ -14,13 +14,16 @@ public class Publicacion {
     private final String mensaje;
     private final Integer diasDesempleado;
     private final Instant creadaEn;
+    private final ConteoDeReacciones conteoDeReacciones;
 
-    private Publicacion(UUID id, String alias, String mensaje, Integer diasDesempleado, Instant creadaEn) {
+    private Publicacion(UUID id, String alias, String mensaje, Integer diasDesempleado,
+                        Instant creadaEn, ConteoDeReacciones conteoDeReacciones) {
         this.id = id;
         this.alias = alias;
         this.mensaje = mensaje;
         this.diasDesempleado = diasDesempleado;
         this.creadaEn = creadaEn;
+        this.conteoDeReacciones = conteoDeReacciones;
     }
 
     public static Publicacion crear(String alias, String mensaje, Integer diasDesempleado) {
@@ -28,13 +31,24 @@ public class Publicacion {
         validarMensaje(mensaje);
         validarDiasDesempleado(diasDesempleado);
 
-        return new Publicacion(UUID.randomUUID(), alias, mensaje, diasDesempleado, Instant.now());
+        return new Publicacion(UUID.randomUUID(), alias, mensaje.strip(),
+                diasDesempleado, Instant.now(), ConteoDeReacciones.vacio());
     }
 
     public static Publicacion reconstruir(UUID id, String alias, String mensaje, Integer diasDesempleado,
-                                          Instant creadaEn) {
+                                          Instant creadaEn, ConteoDeReacciones conteoDeReacciones) {
 
-        return new Publicacion(id, alias, mensaje, diasDesempleado, creadaEn);
+        return new Publicacion(id, alias, mensaje, diasDesempleado, creadaEn, conteoDeReacciones);
+    }
+
+    public Publicacion reaccionar(TipoReaccion tipoReaccion) {
+
+        if (tipoReaccion == null) {
+            throw new PublicacionInvalidaException("Debe indicar el tipo de reacción");
+        }
+
+        return new Publicacion(id, alias, mensaje,
+                diasDesempleado, creadaEn, conteoDeReacciones.incrementar(tipoReaccion));
     }
 
     private static void validarAlias(String alias) {
@@ -80,5 +94,9 @@ public class Publicacion {
 
     public Instant creadaEn() {
         return creadaEn;
+    }
+
+    public ConteoDeReacciones conteoDeReacciones() {
+        return conteoDeReacciones;
     }
 }

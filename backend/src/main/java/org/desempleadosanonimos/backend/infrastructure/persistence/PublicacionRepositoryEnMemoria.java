@@ -9,6 +9,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.UnaryOperator;
 
 public class PublicacionRepositoryEnMemoria implements PublicacionRepository {
 
@@ -32,6 +33,13 @@ public class PublicacionRepositoryEnMemoria implements PublicacionRepository {
                 () -> almacen.values().stream()
                         .sorted(Comparator.comparing(Publicacion::creadaEn).reversed())
                         .limit(CANTIDAD_MAXIMA)
+        );
+    }
+
+    @Override
+    public Mono<Publicacion> modificar(UUID id, UnaryOperator<Publicacion> cambio) {
+        return Mono.fromSupplier(
+                () -> almacen.computeIfPresent(id, (clave, actual) -> cambio.apply(actual))
         );
     }
 }
