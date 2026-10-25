@@ -23,13 +23,13 @@ public class CasosDeUsoConfig {
     }
 
     @Bean
-    public PublicarDesahogo publicarDeshago(PublicacionRepository publicacionRepository,
+    public PublicarDesahogo publicarDesahogo(PublicacionRepository publicacionRepository,
                                             GeneradorDeAlias generadorDeAlias) {
         return new PublicarDesahogo(publicacionRepository, generadorDeAlias);
     }
 
     @Bean
-    public ListarDesahogos listarDeshagos(PublicacionRepository publicacionRepository) {
+    public ListarDesahogos listarDesahogos(PublicacionRepository publicacionRepository) {
         return new ListarDesahogos(publicacionRepository);
     }
 }
