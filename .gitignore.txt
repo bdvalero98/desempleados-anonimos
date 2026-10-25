@@ -1,0 +1,12 @@
+# Sistema operativo
+Thumbs.db
+.DS_Store
+
+# Editores
+.idea/
+.vscode/
+*.iml
+
+# Secretos (para cuando agreguemos base de datos)
+.env
+*.env
