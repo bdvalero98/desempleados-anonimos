@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<hmtl lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Desempleados Anónimos · Por dar la milla extra</title>
+        <meta name="Description" content="Comunidad anónima de apoyo para personas en búsqueda de empleo. Por dar la milla extra.">
+        <meta name="theme-color" content="#c8553d">
+        <link rel="icon" type="image/svg+xml"  href="img/logo.svg">
+        <link rel="stylesheet" href="css/styles.css">
+        <script type="module" src="js/app.js"></script>
+    </head>
+    <body>
+        <header class="cabecera">
+            <img class="logo" src="img/logo.svg" alt="Gato mostrando una billetera vacía, logo de Desempleados Anónimos">
+            <h1>Desempleados Anónimos</h1>
+            <p class="eslogan">Por dar la milla extra</p>
+            <p class="estado" id="estado">Conectando...</p>
+        </header>
+
+        <main>
+            <section class="tarjeta">
+                <h2>Cuéntenos como esta</h2>
+                <form id="formulario">
+                    <label for="mensaje">Su desahogo</label>
+                    <textarea id="mensaje" maxlength="500" rows="4" required placeholder="Aqui nadie lo juzga. Escribe lo que necesite soltar"></textarea>
+                    <p class="contador"><span id="contador">0</span> / 500</p>
+
+                    <label for="dias">Dias desempleado <span class="opcional">(opcional)</span></label>
+                    <input id="dias" type="number" min="0" inputmode="numeric">
+
+                    <button type="submit" id="enviar">Publicar de forma anónima</button>
+                    <p id="error" class="error" role="alert"></p>
+                </form>
+            </section>
+
+            <section>
+                <h2>El muro</h2>
+                <p id="vacio" class="vacio">Aún no hay desahogos. Sé la primera persona en escribir.</p>
+                <div id="muro" aria-live="polite"></div>
+            </section>
+        </main>
+
+        <footer class="pie">
+            <p>Su alias es aleatorio y no guardamos datos personales.</p>
+            <p>Creado por <strong>Manu</strong> y <strong>Danilo</strong></p>
+            <p>
+                <a href="https://github.com/bdvalero98/desempleados-anonimos" target="_blank" rel="noopener noreferrer">Ver el código en GitHub</a>
+            </p>
+        </footer>
+    </body>
+</hmtl>

@@ -1,0 +1,121 @@
+:root {
+  --fondo: #fbf6ee;
+  --tarjeta: #ffffff;
+  --texto: #3a2f2a;
+  --suave: #7a6b62;
+  --acento: #c8553d;
+  --acento-oscuro: #a8432e;
+  --borde: #eadfce;
+  --error: #b3261e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #1f1a17;
+    --tarjeta: #2a231f;
+    --texto: #f1e7dc;
+    --suave: #b8a99d;
+    --acento: #e07a5f;
+    --acento-oscuro: #c8553d;
+    --borde: #3d332d;
+    --error: #ff8a80;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+main, .cabecera, .pie {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.cabecera { text-align: center; padding-top: 2rem; padding-bottom: 1rem; }
+.cabecera h1 { margin: 0; font-size: 2rem; }
+.eslogan { margin: .25rem 0 0; font-style: italic; color: var(--acento); font-size: 1.1rem; }
+.estado { font-size: .8rem; color: var(--suave); }
+
+.logo {
+  width: 130px;
+  height: auto;
+  margin-bottom: .5rem;
+}
+
+h2 { font-size: 1.25rem; }
+
+.tarjeta {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+label { display: block; font-weight: 600; margin-top: .75rem; }
+.opcional { font-weight: 400; color: var(--suave); }
+
+textarea, input {
+  width: 100%;
+  margin-top: .25rem;
+  padding: .6rem;
+  font: inherit;
+  color: inherit;
+  background: var(--fondo);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+}
+
+textarea:focus, input:focus, button:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 1px;
+}
+
+.contador { text-align: right; font-size: .8rem; color: var(--suave); margin: .25rem 0 0; }
+
+#enviar {
+  margin-top: 1rem;
+  width: 100%;
+  padding: .75rem;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--acento);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#enviar:hover:not(:disabled) { background: var(--acento-oscuro); }
+#enviar:disabled { opacity: .6; cursor: wait; }
+
+.error { color: var(--error); min-height: 1.2em; margin: .5rem 0 0; }
+.vacio { color: var(--suave); }
+
+.desahogo header { display: flex; justify-content: space-between; gap: .5rem; flex-wrap: wrap; }
+.desahogo .dias { font-size: .85rem; color: var(--suave); }
+.desahogo p { white-space: pre-wrap; overflow-wrap: anywhere; }
+.desahogo footer { display: flex; gap: .5rem; flex-wrap: wrap; }
+
+.reaccion {
+  font: inherit;
+  padding: .35rem .8rem;
+  color: var(--acento);
+  background: transparent;
+  border: 1px solid var(--acento);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.reaccion:hover:not(:disabled) { background: var(--acento); color: #fff; }
+.reaccion:disabled { opacity: .55; cursor: default; }
+
+.pie { text-align: center; color: var(--suave); font-size: .85rem; padding: 1.5rem 1rem 2rem; }
+.pie p { margin: .25rem 0; }
+.pie a { color: var(--acento); }
+.pie a:hover { color: var(--acento-oscuro); }
